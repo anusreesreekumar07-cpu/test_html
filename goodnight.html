@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I Love You — Hearts Background</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    overflow: hidden;
+    background-color: #ffe6eb; /* soft pink background */
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+
+  .background {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .heart {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 18px;
+    opacity: 0.7;
+    user-select: none;
+    pointer-events: none;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-20vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 4rem;
+    color: #ff4d6d;
+    text-align: center;
+    text-shadow: 2px 2px #ffe6eb;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="background" id="background"></div>
+
+<h1>Dont cry eepy boy</h1>
+
+<script>
+  const bg = document.getElementById('background');
+
+  const totalHearts = 40;
+
+  for(let i = 0; i < totalHearts; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.textContent = '❤️';
+
+    // Random horizontal start position (0 to 100vw)
+    heart.style.left = Math.random() * 100 + 'vw';
+
+    // Random animation duration between 5s and 12s
+    heart.style.animationDuration = (5 + Math.random() * 7) + 's';
+
+    // Random animation delay so hearts don’t move all at once
+    heart.style.animationDelay = (Math.random() * 12) + 's';
+
+    bg.appendChild(heart);
+  }
+</script>
+
+</body>
+</html>
